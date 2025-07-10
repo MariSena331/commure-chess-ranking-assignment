@@ -52,7 +52,7 @@
 }
 
 .item:hover {
-  background-color: #e8e8e8;
+  background-color: var(--item-hover);
 }
 
 .rankBox {
@@ -71,7 +71,6 @@
   color: var(--color-black);
 }
 
-/* Destacar top 3 com cores sutis */
 .gold {
   background: linear-gradient(to right, #fff8dc, #fef6b3);
 }
@@ -84,12 +83,11 @@
   background: linear-gradient(to right, #f6e3d3, #e1c4a3);
 }
 
-/* Scrollbar personalizada */
 .scrollContainer::-webkit-scrollbar {
   width: 6px;
 }
 
 .scrollContainer::-webkit-scrollbar-thumb {
-  background-color: #aaa;
+  background-color: var(--color-gray);
   border-radius: 4px;
 }

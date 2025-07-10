@@ -1,0 +1,10 @@
+@import "../styles/variables.css";
+
+.footer {
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  text-align: center;
+  background-color: var(--color-light-gray);
+  font-size: 0.85rem;
+  color: var(--color-text-gray);
+}

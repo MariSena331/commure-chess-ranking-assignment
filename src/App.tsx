@@ -5,11 +5,13 @@ import logo from "./assets/commure-logo.webp";
 
 import { fetchTop50Players } from "./services/fetchTop50Players";
 import { formatContinuousRating } from "./utils/formatContinuousRating";
+import { getClassicalRatingHistory } from "./utils/getClassicalRatingHistory";
 
 import { Player } from "./types/players";
-import { getClassicalRatingHistory } from "./utils/getClassicalRatingHistory";
+
 import { RatingChart } from "./components/RatingChart";
 import { PlayerList } from "./components/PlayerList";
+import { Footer } from "./components/Footer";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -49,6 +51,10 @@ function App() {
     setRatings(formatContinuousRating(classicalRatingTop1));
   }, [classicalRatingTop1]);
 
+  const handleGenerateCSV = async () => {
+    console.log("Test CSV generation");
+  };
+
   return (
     <div className={styles.app}>
       <nav className={styles.navbar}>
@@ -69,8 +75,13 @@ function App() {
         <main className={styles.fadeIn}>
           <PlayerList players={players.map((player) => player.username)} />
           <RatingChart firstPlayer={firstPlayer} ratings={ratings} />
+
+          <button onClick={handleGenerateCSV} className={styles.downloadButton}>
+            Dowload CSV with the rating history of the 50 top players
+          </button>
         </main>
       )}
+      <Footer />
     </div>
   );
 }

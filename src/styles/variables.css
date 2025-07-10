@@ -4,6 +4,11 @@
   --color-black: #000000;
   --color-dark: #111111;
   --color-gray: #888888;
+  --color-light-gray: #f5f5f5;
+  --color-text-gray: #666;
+
+  --item-hover: #e8e8e8;
+  --base-color-brand--velocity: #a8f4ff;
 
   --font-primary: "Helvetica Neue", sans-serif;
 
