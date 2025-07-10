@@ -6,6 +6,7 @@ import logo from "./assets/commure-logo.webp";
 import { fetchTop50Players } from "./services/fetchTop50Players";
 import { formatContinuousRating } from "./utils/formatContinuousRating";
 import { getClassicalRatingHistory } from "./utils/getClassicalRatingHistory";
+import { buildAndDownloadCsv } from "./utils/buildCsv";
 
 import { Player } from "./types/players";
 
@@ -52,7 +53,11 @@ function App() {
   }, [classicalRatingTop1]);
 
   const handleGenerateCSV = async () => {
-    console.log("Test CSV generation");
+    try {
+      await buildAndDownloadCsv(players.map((p) => p.username));
+    } catch (error: any) {
+      setError(`Error generating CSV: ${error.message || "Unknown error"}`);
+    }
   };
 
   return (

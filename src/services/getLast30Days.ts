@@ -5,5 +5,11 @@ export async function getLast30Days(username: string): Promise<RatingPoint[]> {
     `https://lichess.org/api/user/${username}/rating-history`
   );
 
-  return response.json();
+  if (!response.ok) {
+    throw new Error(
+      `Error fetching rating history for ${username}: ${response.statusText}`
+    );
+  }
+
+  return response.json() as Promise<RatingPoint[]>;
 }
