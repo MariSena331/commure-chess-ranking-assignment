@@ -16,6 +16,7 @@ This project was developed as part of a front-end technical challenge. The goal 
 
 ## 📁 Project Structure
 
+```
 src/
 ├── components/ # Atomic UI components (Header, PlayerList, Footer, etc)
 ├── services/ # API fetch functions
@@ -24,6 +25,7 @@ src/
 ├── assets/ # Logo and images
 ├── App.tsx # Main component
 └── index.tsx
+```
 
 ---
 
