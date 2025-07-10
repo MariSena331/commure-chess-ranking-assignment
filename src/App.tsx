@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 
+import styles from "./App.module.css";
+import logo from "./assets/commure-logo.webp";
+
 import { fetchTop50Players } from "./services/fetchTop50Players";
 import { formatContinuousRating } from "./utils/formatContinuousRating";
 
 import { Player } from "./types/players";
 import { getClassicalRatingHistory } from "./utils/getClassicalRatingHistory";
+import { RatingChart } from "./components/RatingChart";
+import { PlayerList } from "./components/PlayerList";
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const [players, setPlayers] = useState<Player[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [firstPlayer, setFirstPlayer] = useState<string>("");
@@ -31,6 +37,8 @@ function App() {
         }
       } catch (error: any) {
         setError(`Error fetching players: ${error.message || "Unknown error"}`);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -42,33 +50,27 @@ function App() {
   }, [classicalRatingTop1]);
 
   return (
-    <div>
-      <header>
-        <div>
-          <h1>Chess Ranking - Top 50 Players</h1>
-          {!error && (
-            <ul>
-              {players.map((player) => (
-                <li key={player.username}>
-                  <strong>{player.username}</strong>
-                </li>
-              ))}
-            </ul>
-          )}
+    <div className={styles.app}>
+      <nav className={styles.navbar}>
+        <img src={logo} alt="Commure Logo" className={styles.logo} />
+        <h1 className={styles.title}>
+          Chess Ranking Assignment – Mariana Sena
+        </h1>
+      </nav>
+      {error ? (
+        <div className={styles.errorContainer}>
+          <p>{error}</p>
         </div>
-        <br />
-        <div>
-          <h1>Rating History for the #1 player - {firstPlayer}</h1>
-          <span>last 30 days</span>
-          {ratings &&
-            Object.entries(ratings).map(([date, rating]) => (
-              <li key={date}>
-                {date}: {rating},
-              </li>
-            ))}
+      ) : loading ? (
+        <div className={styles.loaderContainer}>
+          <div className={styles.spinner}></div>
         </div>
-        <div></div>
-      </header>
+      ) : (
+        <main className={styles.fadeIn}>
+          <PlayerList players={players.map((player) => player.username)} />
+          <RatingChart firstPlayer={firstPlayer} ratings={ratings} />
+        </main>
+      )}
     </div>
   );
 }
