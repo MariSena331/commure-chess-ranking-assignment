@@ -1,0 +1,95 @@
+@import "../styles/variables.css";
+
+.container {
+  background-color: var(--color-white);
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 600px;
+  width: 90%;
+  font-family: var(--font-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--color-dark);
+}
+
+.scrollContainer {
+  max-height: 400px;
+  overflow-y: auto;
+  width: 100%;
+  padding-right: 0.5rem;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--color-bg);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.item:hover {
+  background-color: #e8e8e8;
+}
+
+.rankBox {
+  min-width: 50px;
+  text-align: left;
+  font-weight: bold;
+  color: var(--color-gray);
+}
+
+.rank {
+  font-size: 1rem;
+}
+
+.username {
+  flex: 1;
+  color: var(--color-black);
+}
+
+/* Destacar top 3 com cores sutis */
+.gold {
+  background: linear-gradient(to right, #fff8dc, #fef6b3);
+}
+
+.silver {
+  background: linear-gradient(to right, #f0f0f0, #d9d9d9);
+}
+
+.bronze {
+  background: linear-gradient(to right, #f6e3d3, #e1c4a3);
+}
+
+/* Scrollbar personalizada */
+.scrollContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 4px;
+}

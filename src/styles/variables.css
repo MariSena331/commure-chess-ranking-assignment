@@ -1,0 +1,12 @@
+:root {
+  --color-bg: #eaeaea;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-dark: #111111;
+  --color-gray: #888888;
+
+  --font-primary: "Helvetica Neue", sans-serif;
+
+  --radius: 10px;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
